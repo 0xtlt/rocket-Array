@@ -7,7 +7,7 @@ Rocket Array is designed to be simplest way possible to manipulate your array
 ## How it works ?
 Initialize
 ```javascript
-const Rarray = require('../RocketArray');
+const Rarray = require('RocketArray');
 
 const myArray = new Rarray(['this', 'is', 'my', 'list', 1, 2, 3, "world", "my", "this", "this"]);
 ```
