@@ -2,7 +2,7 @@
 Rocket Array is designed to be simplest way possible to manipulate your array
 
 ## Installation 🌍
-    $ npm install cpanel-node
+    $ npm install rocket-array
 
 ## How it works ?
 Initialize
