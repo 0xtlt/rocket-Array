@@ -1,8 +1,9 @@
 'use strict';
 class Rarray {
     constructor(array){
-        if(typeof array === 'object'){
-            this.array = array;
+        let tmp = Object.assign([], array);
+        if(typeof tmp === 'object'){
+            this.array = tmp;
         } else {
             throw new Error("That's not a array");
         }
