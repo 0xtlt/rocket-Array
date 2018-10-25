@@ -3,6 +3,8 @@ class Rarray {
     constructor(array){
         if(typeof array === 'object'){
             this.array = array;
+        } else {
+            throw new Error("That's not a array");
         }
     }
 
@@ -59,6 +61,27 @@ class Rarray {
 
     get(){
         return this.array;
+    }
+
+    add(value){
+        this.array.push(value);
+
+        return this.array;
+    }
+
+    addBefore(value){
+        this.array.unshift(value);
+
+        return this.array;
+    }
+
+    edit(array){
+        if(typeof array === "object"){
+            this.array = array;
+            return true
+        } else {
+            return false;
+        }
     }
 }
 

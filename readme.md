@@ -43,3 +43,18 @@ myArray.removeRecurrents();
 const look = myArray.get();
 //return ['this', 'is', 'my', 'list', 1, 2, 3, "world"]
 ```
+
+Add data to the array
+```javascript
+myArray.add('myData');
+```
+
+Add data to the beginning of your array
+```javascript
+myArray.addBefore('myData');
+```
+
+## Or just replace the array
+```javascript
+myArray.edit(['new', 'array']);
+```
