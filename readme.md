@@ -93,26 +93,6 @@ const myArray = new Rarray(['this', 'is', 'hello', 'world', {
         level: 2
     }
 }]);
-```
-
-Find data from the array with regex
-```javascript
-const myArray = new Rarray(['this', 'is', 'hello', 'world', {
-    name: "thomas",
-    infos: {
-        level: 18
-    }
-}, {
-    name: "lucas",
-    infos: {
-        level: 50
-    }
-}, {
-    name: "other",
-    infos: {
-        level: 2
-    }
-}]);
 
 myArray.find({
     regex: /is/,
