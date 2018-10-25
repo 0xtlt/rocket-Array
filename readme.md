@@ -54,6 +54,27 @@ Add data to the beginning of your array
 myArray.addBefore('myData');
 ```
 
+Delete data with its position in the array
+```javascript
+myArray.remove(1);
+//return ['this', 'my', 'list', 1, 2, 3, "world"]
+
+//or
+
+myArray.remove(1, 2);
+//the second parameter defines how much data should be deleted after the position
+//return ['this', 'list', 1, 2, 3, "world"]
+```
+
+Get the length of the array
+```javascript
+myArray.length();
+//return 8
+const humanReadable = false;
+myArray.length(humanReadable);
+//returns 7 for the system because the first data starts at position 0
+```
+
 ## Or just replace the array
 ```javascript
 myArray.edit(['new', 'array']);

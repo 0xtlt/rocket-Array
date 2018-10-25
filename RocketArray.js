@@ -75,6 +75,16 @@ class Rarray {
         return this.array;
     }
 
+    remove(i = 0, number = 1){
+        this.array.splice(i, number);
+
+        return this.array;
+    }
+    
+    length(human = true){
+        return human ? this.array.length : this.array.length - 1;
+    }
+
     edit(array){
         if(typeof array === "object"){
             this.array = array;
