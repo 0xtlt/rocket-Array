@@ -88,10 +88,38 @@ class Rarray {
     edit(array){
         if(typeof array === "object"){
             this.array = array;
-            return true
+            return true;
         } else {
             return false;
         }
+    }
+
+    find(params){
+        let tmp = this.array;
+        if(params.regex)
+            tmp = tmp.filter(x => params.regex.test(x))
+
+        if(params.type)
+            tmp = tmp.filter(x => typeof x === params.type)
+
+        return tmp;
+    }
+
+    findJSON(params){
+        let tmp = this.array;
+        let execution = '';
+
+        params.where.split('.').forEach(x => {
+            execution += `["${x}"]`
+        });
+
+        if(params.where)
+            tmp = tmp.filter((x, i) => typeof x === "object" ? params.regex.test(eval("tmp["+i+"]"+execution)) : false)
+
+        if(params.type)
+            tmp = tmp.filter((x, i) => typeof eval("tmp["+i+"]"+execution) === params.type)
+
+        return tmp;
     }
 }
 

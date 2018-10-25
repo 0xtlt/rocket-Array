@@ -75,6 +75,65 @@ myArray.length(humanReadable);
 //returns 7 for the system because the first data starts at position 0
 ```
 
+Find data from the array with regex
+```javascript
+const myArray = new Rarray(['this', 'is', 'hello', 'world', {
+    name: "thomas",
+    infos: {
+        level: 18
+    }
+}, {
+    name: "lucas",
+    infos: {
+        level: 50
+    }
+}, {
+    name: "other",
+    infos: {
+        level: 2
+    }
+}]);
+```
+
+Find data from the array with regex
+```javascript
+const myArray = new Rarray(['this', 'is', 'hello', 'world', {
+    name: "thomas",
+    infos: {
+        level: 18
+    }
+}, {
+    name: "lucas",
+    infos: {
+        level: 50
+    }
+}, {
+    name: "other",
+    infos: {
+        level: 2
+    }
+}]);
+
+myArray.find({
+    regex: /is/,
+    type: "string" //type is optional
+});
+//return [ 'this', 'is' ]
+
+myArray.findJSON({
+    regex: /as/,
+    type: "string", //type is optional
+    where: "name"
+});
+//return [ { name: 'thomas', infos: { level: 18 } }, { name: 'lucas', infos: { level: 50 } } ]
+
+myArray.findJSON({
+    regex: /2/,
+    where: "infos.level"
+});
+//return [ { name: 'other', infos: { level: 2 } } ]
+```
+
 ## Or just replace the array
 ```javascript
 myArray.edit(['new', 'array']);
