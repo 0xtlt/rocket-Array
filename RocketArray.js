@@ -221,6 +221,27 @@ class Rarray {
         return this.array;
     }
 
+    mufindJSON(params){
+        let tmp = Object.assign([], this.array);
+
+        params.forEach(x => {
+            tmp = this.search(tmp, x.where, x, false);
+        });
+        
+        return tmp;
+    }
+
+    mufindAndRemoveInJSON(params){
+        let tmp = Object.assign([], this.array);
+
+        params.forEach(x => {
+            tmp = this.search(tmp, x.where, x, true, true);
+        });
+        
+        this.array = tmp;
+        return tmp;
+    }
+
     text(){
         return JSON.stringify(this.array);
     }

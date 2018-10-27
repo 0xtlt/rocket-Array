@@ -188,6 +188,44 @@ myArray.import(local); //convert the text into array and save it
 
 ---
 
+## Search array data with multiple parameters
+```javascript
+const params = [{
+    where: "name",
+    regex: /as/
+},{
+    where: "infos.level",
+    morethan: 5
+}];
+
+myArray.mufindJSON(params);
+```
+
+| Parameter | Type | Required | Default |
+|---|---|---|---|
+| Params | Array | Yes | No Default Value |
+
+---
+
+## Search array data with multiple parameters and delete them
+```javascript
+const params = [{
+    where: "name",
+    regex: /as/
+},{
+    where: "infos.level",
+    morethan: 5
+}];
+
+myArray.mufindAndRemoveInJSON(params);
+```
+
+| Parameter | Type | Required | Default |
+|---|---|---|---|
+| Params | Array | Yes | No Default Value |
+
+---
+
 ## Or just replace the array
 ```javascript
 const newArray = ['new', 'array'];
