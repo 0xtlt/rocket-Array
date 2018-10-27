@@ -14,7 +14,7 @@ class Rarray {
         if(typeof string === "string")
             decode = JSON.parse(data);
         else
-            decode = data;
+            throw new Error("The param must be a string")
         
             this.array = decode;
     }
@@ -221,7 +221,7 @@ class Rarray {
             })
 
         if(params.type)
-            tmp = tmp.filter((x, i) => (typeof x === params.type))
+            tmp = tmp.filter((x, i) => !(typeof x === params.type))
 
         this.array = tmp;
         return tmp;
