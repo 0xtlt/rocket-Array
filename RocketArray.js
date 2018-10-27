@@ -9,6 +9,37 @@ class Rarray {
         }
     }
 
+    search(array, string, params, valueIfNotObject = false, del = false) {
+        let tmp = [];
+        array.forEach((x) => {
+            typeof x === "object" ? (this.subSearch(x, string, params, del) ? tmp.push(x) : false) : valueIfNotObject ? tmp.push(x) : false
+        });
+        return tmp;
+    }
+    
+    subSearch(json, string, params, del = false){
+        if(!/\./.test(string)) {
+            let end = true;
+            
+            if(params.regex && end)
+                end = params.regex.test(json[string]);
+
+            if(params.morethan && end)
+                end = json[string] > params.morethan;
+
+            if(params.lessthan && end)
+                end = json[string] < params.lessthan;
+
+            if(params.type && end)
+                end = typeof json[string] === params.type;
+
+            return del ? !end : end;
+        } else {
+            let spl = string.split(/\./g);
+            return this.subSearch(json[spl[0]], spl.slice(1).join('.'), params, del);
+        }
+    }
+
     import(data){
         let decode = "";
         if(typeof string === "string")
@@ -16,7 +47,7 @@ class Rarray {
         else
             throw new Error("The param must be a string")
         
-            this.array = decode;
+        this.array = decode;
     }
 
     recurrent(nbr = 1){
@@ -143,49 +174,7 @@ class Rarray {
     }
 
     findJSON(params){
-        let tmp = this.array;
-        let execution = '';
-
-        params.where.split('.').forEach(x => {
-            execution += `["${x}"]`
-        });
-
-        if(params.regex)
-            tmp = tmp.filter((x, i) => typeof x === "object" ? params.regex.test(eval("tmp["+i+"]"+execution)) : false)
-            
-
-        if(params.morethan)
-            tmp = tmp.filter((x, i) => {
-                if(typeof tmp[i] === "object"){
-                    let tmp_ = eval("tmp["+i+"]"+execution);
-                    if(!isNaN(tmp_)){
-                        return Number(tmp_) > params.morethan;
-                    } else {
-                        return false;
-                    }
-                } else {
-                    return true
-                }
-            })
-
-        if(params.lessthan)
-            tmp = tmp.filter((x, i) => {
-                if(typeof tmp[i] === "object"){
-                    let tmp_ = eval("tmp["+i+"]"+execution);
-                    if(!isNaN(tmp_)){
-                        return Number(tmp_) < params.lessthan;
-                    } else {
-                        return false;
-                    }
-                } else {
-                    return true
-                }
-            })
-
-        if(params.type)
-            tmp = tmp.filter((x, i) => typeof eval("tmp["+i+"]"+execution) === params.type)
-
-        return tmp;
+        return this.search(this.array, params.where, params, false);
     }
 
     findAndRemove(params){
@@ -228,55 +217,8 @@ class Rarray {
     }
 
     findAndRemoveInJSON(params){
-        let tmp = this.array;
-        let execution = '';
-
-        params.where.split('.').forEach(x => {
-            execution += `["${x}"]`
-        });
-
-        if(params.regex)
-            tmp = tmp.filter((x, i) => typeof x === "object" ? !params.regex.test(eval("tmp["+i+"]"+execution)) : true)
-
-        if(params.morethan)
-            tmp = tmp.filter((x, i) => {
-                if(typeof tmp[i] === "object"){
-                    let tmp_ = eval("tmp["+i+"]"+execution);
-                    if(!isNaN(tmp_)){
-                        return Number(tmp_) < params.morethan;
-                    } else {
-                        return false;
-                    }
-                } else {
-                    return true
-                }
-            })
-
-        if(params.lessthan)
-            tmp = tmp.filter((x, i) => {
-                if(typeof tmp[i] === "object"){
-                    let tmp_ = eval("tmp["+i+"]"+execution);
-                    if(!isNaN(tmp_)){
-                        return Number(tmp_) > params.lessthan;
-                    } else {
-                        return false;
-                    }
-                } else {
-                    return true
-                }
-            })
-
-        if(params.type)
-            tmp = tmp.filter((x, i) => {
-                if(typeof tmp[i] === "object"){
-                    return typeof eval("tmp["+i+"]"+execution) === params.type
-                } else {
-                    return true;
-                }
-            })
-
-        this.array = tmp;
-        return tmp;
+        this.array = this.search(this.array, params.where, params, true, true);
+        return this.array;
     }
 
     text(){
