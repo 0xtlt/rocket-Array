@@ -185,3 +185,15 @@ myArray.findAndRemoveInJSON({
 const local = myArray.text(); //convert the array into string
 myArray.import(local); //convert the text into array and save it
 ```
+
+---
+
+## Or just replace the array
+```javascript
+const newArray = ['new', 'array'];
+myArray.edit(newArray);
+```
+
+| Parameter | Type | Required | Default |
+|---|---|---|---|
+| newArray | Array | Yes | No default value |
