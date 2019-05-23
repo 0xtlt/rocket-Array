@@ -1,9 +1,11 @@
 {
   "name": "rocket-array",
-  "version": "1.5.0",
+  "version": "2.0.0",
   "description": "Rocket Array is designed to be simplest way possible to manipulate your array",
   "main": "RocketArray.js",
-  "keywords": ["array"],
+  "keywords": [
+    "array"
+  ],
   "author": "Thomas Tastet",
   "license": "MIT",
   "repository": {
