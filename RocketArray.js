@@ -72,6 +72,9 @@ Array.prototype.remove = function(i = 0, number = 1) {
  */
 Array.prototype.find = function(params) {
   let tmp = this;
+
+  if (params.equal) tmp = tmp.filter(x => x === params.equal);
+
   if (params.regex) tmp = tmp.filter(x => params.regex.test(x));
 
   if (params.morethan)
@@ -122,6 +125,8 @@ Array.prototype.search = function(
     if (!/\./.test(string)) {
       let end = true;
 
+      if (params.equal && end) end = json[string] === params.equal;
+
       if (params.regex && end) end = params.regex.test(json[string]);
 
       if (params.morethan && end) end = json[string] > params.morethan;
@@ -164,6 +169,8 @@ Array.prototype.findJSON = function(params) {
  */
 Array.prototype.findAndRemove = function(params) {
   let tmp = this;
+
+  if (params.equal) tmp = tmp.filter(x => x !== params.equal);
 
   if (params.regex)
     tmp = tmp.filter((x, i) =>

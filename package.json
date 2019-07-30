@@ -1,6 +1,6 @@
 {
   "name": "rocket-array",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Rocket Array is designed to be simplest way possible to manipulate your array",
   "main": "RocketArray.js",
   "keywords": [

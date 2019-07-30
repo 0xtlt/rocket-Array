@@ -1,6 +1,6 @@
-# Rocket Array 2.0 🎉🚀
+# Rocket Array 2.1 🎉🚀
 
-Rocket Array 2.0 is 33.6% lighter and until 20 times more faster than Rocket Array 1.5 and is designed to be simplest way possible to manipulate your array
+Rocket Array 2.1 is 33.6% lighter and until 20 times more faster than Rocket Array 1.5 and is designed to be simplest way possible to manipulate your array
 
 ## Installation 🌍
 
@@ -121,6 +121,7 @@ myArray.find({
   regex: /is/,
   morethan: 5,
   lessthan: 5,
+  equal: 10,
   type: "string"
 });
 
@@ -129,12 +130,14 @@ myArray.findJSON({
   type: "string",
   morethan: 5,
   lessthan: 5,
+  equal: 10,
   where: "infos.level"
 });
 ```
 
 | Parameter                    | Type   | Required | Default          |
 | ---------------------------- | ------ | -------- | ---------------- |
+| equal                        | All    | No       | undefined        |
 | regex                        | Regex  | No       | false            |
 | type                         | String | No       | false            |
 | morethan                     | Number | No       | false            |
@@ -151,6 +154,7 @@ myArray = myArray.findAndRemove({
   regex: /is/,
   lessthan: 10,
   morethan: 9,
+  equal: 10,
   type: "string"
 });
 
@@ -166,6 +170,7 @@ myArray = myArray.findAndRemoveInJSON({
 
 | Parameter                    | Type   | Required | Default          |
 | ---------------------------- | ------ | -------- | ---------------- |
+| equal                        | All    | No       | undefined        |
 | regex                        | Regex  | No       | false            |
 | type                         | String | No       | false            |
 | morethan                     | Number | No       | false            |
